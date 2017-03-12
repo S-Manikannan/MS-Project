@@ -1,0 +1,41 @@
+<maps-page></maps-page>
+<div *ngIf = "!isUserAuthenticated" >
+<ion-list>
+
+  <ion-item>
+    <ion-label stacked>Username</ion-label>
+    <ion-input type="text" [(ngModel)] = "userName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Password</ion-label>
+    <ion-input type="password" [(ngModel)] = "passWord"></ion-input>
+  </ion-item>
+
+</ion-list>
+
+<ion-item>
+    <button ion-button block (click) = "AuthenticateUser()">Sign In</button>
+</ion-item>
+</div>
+<div *ngIf = "isUserAuthenticated">
+<ion-menu [content]="content">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Pages</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+</div>
