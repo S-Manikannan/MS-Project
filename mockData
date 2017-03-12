@@ -1,0 +1,26 @@
+Table name: userMast
+Description: This table used to store user register/signup details
+Fields: id,userName,password,email,phoneno,dob
+Design Note: This all the fields need when the user register form or singup form
+json mock data:
+
+{ [{"id":"1","userName":"test","password":"testpass","email":"test@test.com","phoneno":"1234567890","dob":"12-12-2012"},
+	{"id":"2","userName":"admin","password":"testpass","email":"test1@test.com","phoneno":"1234567890","dob":"12-12-2012"},
+	{"id":"3","userName":"test2","password":"testpass","email":"test@2test.com","phoneno":"1234567890","dob":"12-12-2012"},
+	{"id":"4","userName":"test3","password":"testpass","email":"test3@test.com","phoneno":"1234567890","dob":"12-12-2012"},
+	{"id":"5","userName":"test4","password":"testpass","email":"test4@test.com","phoneno":"1234567890","dob":"12-12-2012"}] }
+
+Table name: ownerMast
+Description: This table used to store owner register/signup details
+Fields: id,userName,password,email,phoneno,dob,lat,lng,shopName
+Design Note: This all the fields need when the owner register form or singup form.In lat,long field the user fix by add marker to map so you need to add small map while creating the account.
+json mock data:
+
+{ [{"id":"1","userName":"test","password":"testpass","email":"test@test.com","phoneno":"1234567890","dob":"12-12-2012","lat":"12.975971","long":"80.221209","shopName":"apollo"},
+	{"id":"2","userName":"admin","password":"testpass","email":"test1@test.com","phoneno":"1234567890","dob":"12-12-2012","lat":"12.975971","long":"80.221209","shopName":"apollo"},
+	{"id":"3","userName":"test2","password":"testpass","email":"test@2test.com","phoneno":"1234567890","dob":"12-12-2012","lat":"12.975971","long":"80.221209","shopName":"apollo"},
+	{"id":"4","userName":"test3","password":"testpass","email":"test3@test.com","phoneno":"1234567890","dob":"12-12-2012","lat":"12.975971","long":"80.221209","shopName":"apollo"},
+	{"id":"5","userName":"test4","password":"testpass","email":"test4@test.com","phoneno":"1234567890","dob":"12-12-2012","lat":"12.975971","long":"80.221209","shopName":"apollo"}] }
+	
+
+
