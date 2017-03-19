@@ -1,41 +1,85 @@
-<maps-page></maps-page>
-<div *ngIf = "!isUserAuthenticated" >
-<ion-list>
+<div *ngIf="!isUserAuthenticated">
+	<div padding>
+		<ion-segment [(ngModel)]="loginType" (dblclick) = "loginType = null">
+			<ion-segment-button value="user">
+				Login As User
+			</ion-segment-button>
+			<ion-segment-button value="owner">
+				Login As Owner
+			</ion-segment-button>
+		</ion-segment>
+	</div>
 
-  <ion-item>
-    <ion-label stacked>Username</ion-label>
-    <ion-input type="text" [(ngModel)] = "userName"></ion-input>
-  </ion-item>
+	<div [ngSwitch]="loginType">
+		<div *ngSwitchCase="'user'">
+			<ion-list>
+				<ion-item>
+					<ion-label stacked>User Name</ion-label>
+					<ion-input type="text" [(ngModel)]="userName"></ion-input>
+				</ion-item>
 
-  <ion-item>
-    <ion-label stacked>Password</ion-label>
-    <ion-input type="password" [(ngModel)] = "passWord"></ion-input>
-  </ion-item>
+				<ion-item>
+					<ion-label stacked>Password</ion-label>
+					<ion-input type="password" [(ngModel)]="passWord"></ion-input>
+				</ion-item>
 
-</ion-list>
+			</ion-list>
 
-<ion-item>
-    <button ion-button block (click) = "AuthenticateUser()">Sign In</button>
-</ion-item>
+			<ion-item>
+				<button ion-button block (click)="AuthenticateUser()">Sign In</button>
+			</ion-item>
+		</div>
+		<div *ngSwitchCase="'owner'">
+			<ion-list>
+				<ion-item>
+					<ion-label stacked>Owner Name</ion-label>
+					<ion-input type="text" [(ngModel)]="userName"></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Password</ion-label>
+					<ion-input type="password" [(ngModel)]="passWord"></ion-input>
+				</ion-item>
+
+			</ion-list>
+
+			<ion-item>
+				<button ion-button block (click)="AuthenticateUser()">Sign In</button>
+			</ion-item>
+		</div>
+
+	</div>
+	<ion-grid>
+		<ion-row>
+			<ion-col col-12>
+				<ion-searchbar [(ngModel)]="searchMedicineInput" [showCancelButton]="true"></ion-searchbar>
+				<ion-list style="display:inine">
+					<button ion-item *ngFor="let md of medicineData | searchMedicines:searchMedicineInput">
+            {{ md.medicineName }}
+          </button>
+				</ion-list>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </div>
-<div *ngIf = "isUserAuthenticated">
-<ion-menu [content]="content">
+<div *ngIf="isUserAuthenticated">
+	<ion-menu [content]="content">
 
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Pages</ion-title>
-    </ion-toolbar>
-  </ion-header>
+		<ion-header>
+			<ion-toolbar>
+				<ion-title>Pages</ion-title>
+			</ion-toolbar>
+		</ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+		<ion-content>
+			<ion-list>
+				<button ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
-    </ion-list>
-  </ion-content>
+			</ion-list>
+		</ion-content>
 
-</ion-menu>
+	</ion-menu>
 
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+	<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
 </div>

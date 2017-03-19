@@ -8,6 +8,8 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
 import { MapsPage } from '../pages/maps/maps';
 
+import {MEDICINEDATA} from './mock-data'
+import { MedicineDetails } from './app.model'
 
 export class credentials{
   userName:string;
@@ -27,6 +29,10 @@ export class MyApp {
   userName:string;
   passWord:string;
   isUserAuthenticated:boolean = false;
+  loginType:string  = "user";
+  actionType:string = "";
+  medicineData:MedicineDetails[] = MEDICINEDATA;
+  searchMedicineInput:string = "";
 
   constructor(public platform: Platform,public menu: MenuController,public alertCtrl:AlertController) {
     this.initializeApp();
@@ -34,7 +40,8 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage }
+      { title: 'My First List', component: ListPage },
+      { title: 'Search Medicines',component:MapsPage}
     ];
     this.credentials = [
       {userName:"subbu",passWord:"subbu"},

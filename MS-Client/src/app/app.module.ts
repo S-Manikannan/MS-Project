@@ -7,13 +7,16 @@ import { ListPage } from '../pages/list/list';
 import { MapsPage } from '../pages/maps/maps';
 import { NavController } from 'ionic-angular';
 
+import {SearchMedicinesPipe} from './search-pipe'
+
 @NgModule({
   declarations: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
-    MapsPage
+    MapsPage,
+    SearchMedicinesPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp)
